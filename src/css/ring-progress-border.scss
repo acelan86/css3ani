@@ -1,0 +1,83 @@
+/**
+ * 生成一个递增的圆环
+ * @author acelan(xiaobin8[at]staff.sina.com.cn)
+ */
+
+$ringDiameter: 200px;  /* 环直径 */
+$ringBorderWidth: 10px; /* 环粗细 */
+$ringBorderColor: #fc0; /* 环颜色 */
+$ringClassName : ring-progress + $ringDiameter; /* 环的class */
+$ringAniDur : 20s; /* 环转动动画时长 */
+
+/* 旋转方法 */
+@-webkit-keyframes ringProgressRotate{
+    0% {
+        -webkit-transform:rotate(0deg);
+    }
+    25% {
+        -webkit-transform:rotate(-180deg);
+    }
+    50% {
+        -webkit-transform:rotate(-180deg);
+    }
+    75% {
+        -webkit-transform:rotate(-360deg);
+    }
+    100% {
+        -webkit-transform:rotate(-360deg);
+    }
+}
+
+.#{$ringClassName} {
+    border-radius: 999px;
+    width: $ringDiameter;
+    height: $ringDiameter;
+    position:absolute;
+}
+
+.#{$ringClassName} .left{
+    width: $ringDiameter;
+    height: $ringDiameter;
+    position:absolute;
+    clip: rect(0, $ringDiameter / 2, $ringDiameter, 0);
+}
+.#{$ringClassName} .left:before{
+    width: $ringDiameter - $ringBorderWidth * 2;
+    height: $ringDiameter - $ringBorderWidth * 2;
+    position:absolute;
+    border-radius:999px;
+    border:$ringBorderWidth solid $ringBorderColor;
+    clip: rect(0, $ringDiameter / 2, $ringDiameter, 0);
+}
+.#{$ringClassName} .right,
+.#{$ringClassName} .right:before{
+    width: $ringDiameter - $ringBorderWidth * 2;
+    height: $ringDiameter - $ringBorderWidth * 2;
+    position:absolute;
+    border-radius:999px;
+    clip: rect(0, $ringDiameter, $ringDiameter, $ringDiameter / 2);
+}
+.#{$ringClassName} .left:before,
+.#{$ringClassName} .right:before{
+    content: ' ';
+    border:$ringBorderWidth solid $ringBorderColor;
+}
+
+.#{$ringClassName} .left:before {
+    border-color: $ringBorderColor;
+    -webkit-animation-name: ringProgressRotate;
+    -webkit-animation-duration: $ringAniDur;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+}
+
+.#{$ringClassName} .right:before {
+    border-color: $ringBorderColor;
+    -webkit-animation-name: ringProgressRotate;
+    -webkit-animation-duration: $ringAniDur;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: $ringAniDur / 4;
+}
+
+
