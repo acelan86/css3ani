@@ -1,0 +1,61 @@
+/**
+ * 生成一个旋转有缺口的圆环
+ * @author acelan(xiaobin8[at]staff.sina.com.cn)
+ */
+
+$ringDiameter: 100px;  /* 环直径 */
+$ringBorderWidth: 10px; /* 环粗细 */
+$ringBorderColor: #fc0; /* 环颜色 */
+$ringCntColor: #fff; /* 内容区颜色 */
+$gapAngle : 45deg; /* 缺口角度 */
+$gapColor : #ccc;  /* 缺口颜色 */
+$ringClassName : ring + $ringDiameter; /* 环的class */
+$ringAniDur : 3s; /* 环转动动画时长 */
+
+/* 旋转方法 */
+@-webkit-keyframes rotateIn{
+    0% {
+        -webkit-transform:rotate(0deg);
+    }
+    100% {
+        -webkit-transform:rotate(-360deg);
+    }
+}
+
+/* 生成转动环样式 start */
+.#{$ringClassName} {
+    width : $ringDiameter;
+    height : $ringDiameter;
+    border-radius : 999px;
+    background-color : $ringBorderColor;
+    position:absolute;
+    overflow:hidden;
+    -webkit-animation-name: rotateIn;
+    -webkit-animation-duration: $ringAniDur;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+}
+.#{$ringClassName}:before {
+    content : ' ';
+    width : $ringDiameter - 2 * $ringBorderWidth;
+    height : $ringDiameter - 2 * $ringBorderWidth;
+    border-radius : 999px;
+    background-color : $ringCntColor;
+    margin : $ringBorderWidth;
+    position: absolute;
+    text-align:center;
+    line-height: $ringDiameter - 2 * $ringBorderWidth;
+    z-index: 1;
+}
+.#{$ringClassName}:after {
+    content : ' ';
+    background-color : $gapColor;
+    width : 999px;
+    height : 999px;
+    position : absolute;
+    left: $ringDiameter / 2;
+    top: $ringDiameter / 2;
+    -webkit-transform-origin: 0% 0%;
+    -webkit-transform: skew(90 - $gapAngle);
+}
+/* 生成转动环样式 end */

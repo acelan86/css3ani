@@ -1,0 +1,27 @@
+{
+  "name": "radar",
+  "title": "龙渊雷达",
+  "description": "The best project ever.",
+  "version": "1.0.0",
+  "homepage": "",
+  "author": {
+    "name": "acelan",
+    "email": "xiaobin8[at]staff.sina.com.cn"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": ""
+    }
+  ],
+  "devDependencies": {
+    "grunt-contrib-sass": "~0.3.0",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-concat": "~0.1.2",
+    "grunt-contrib-uglify": "~0.1.1",
+    "grunt-contrib-watch": "~0.2.0",
+    "grunt-contrib-connect": "~0.3.0",
+    "grunt-contrib-imagemin": "~0.1.4"
+  },
+  "keywords": []
+}
