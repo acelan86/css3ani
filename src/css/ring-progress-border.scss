@@ -4,10 +4,10 @@
  */
 
 $ringDiameter: 200px;  /* 环直径 */
-$ringBorderWidth: 10px; /* 环粗细 */
+$ringBorderWidth: 20px; /* 环粗细 */
 $ringBorderColor: #fc0; /* 环颜色 */
 $ringClassName : ring-progress + $ringDiameter; /* 环的class */
-$ringAniDur : 20s; /* 环转动动画时长 */
+$ringAniDur : 10s; /* 环转动动画时长 */
 
 /* 旋转方法 */
 @-webkit-keyframes ringProgressRotate{
@@ -15,16 +15,16 @@ $ringAniDur : 20s; /* 环转动动画时长 */
         -webkit-transform:rotate(0deg);
     }
     25% {
-        -webkit-transform:rotate(-180deg);
+        -webkit-transform:rotate(180deg);
     }
     50% {
-        -webkit-transform:rotate(-180deg);
+        -webkit-transform:rotate(180deg);
     }
     75% {
-        -webkit-transform:rotate(-360deg);
+        -webkit-transform:rotate(360deg);
     }
     100% {
-        -webkit-transform:rotate(-360deg);
+        -webkit-transform:rotate(360deg);
     }
 }
 
@@ -66,18 +66,18 @@ $ringAniDur : 20s; /* 环转动动画时长 */
 .#{$ringClassName} .left:before {
     border-color: $ringBorderColor;
     -webkit-animation-name: ringProgressRotate;
-    -webkit-animation-duration: $ringAniDur;
+    -webkit-animation-duration: $ringAniDur * 2;
     -webkit-animation-iteration-count: infinite;
     -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: $ringAniDur / 2;
 }
 
 .#{$ringClassName} .right:before {
     border-color: $ringBorderColor;
     -webkit-animation-name: ringProgressRotate;
-    -webkit-animation-duration: $ringAniDur;
+    -webkit-animation-duration: $ringAniDur * 2;
     -webkit-animation-iteration-count: infinite;
     -webkit-animation-timing-function: linear;
-    -webkit-animation-delay: $ringAniDur / 4;
 }
 
 

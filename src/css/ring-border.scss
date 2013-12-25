@@ -4,9 +4,9 @@
  */
 
 $ringDiameter: 100px;  /* 环直径 */
-$ringBorderWidth: 10px; /* 环粗细 */
+$ringBorderWidth: 20px; /* 环粗细 */
 $ringBorderColor: #fc0; /* 环颜色 */
-$gapAngle : 45deg; /* 缺口角度 */
+$gapAngle : 90deg; /* 缺口角度 */
 $ringClassName : ring + $ringDiameter; /* 环的class */
 $ringAniDur : 3s; /* 环转动动画时长 */
 
